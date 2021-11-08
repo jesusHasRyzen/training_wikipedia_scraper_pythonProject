@@ -6,6 +6,10 @@ from flask import Flask, render_template, request
 # used to look up quite honestly anything on wikipedia
 main = Flask(__name__)
 
+if __name__ == '__main__':
+    # webSite.debug = True
+    main.run()
+
 @main.route('/')
 def instructions():
     return render_template('index.html')
