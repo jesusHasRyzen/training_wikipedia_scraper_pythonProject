@@ -10,8 +10,8 @@ main = Flask(__name__)
 def instructions():
     return render_template('index.html')
 
-@main.route("/" , method=['POST'])
-def _returnUrlofImage():
+@main.route('/' , method=['POST'])
+def returnUrlofImage():
     wikiUrl = convertStr2Url(request.form['input'])
     parseDataFromWiki = getParseDatafromUrl(wikiUrl)
     htmltagImage = getAllImagesFromUrl(parseDataFromWiki)
@@ -27,7 +27,7 @@ def convertStr2Url(inputString):
     return wikiUrl
 def getParseDatafromUrl(url):
     # here we get the websites url
-    page = requests.get(wikiUrl)
+    page = requests.get(url)
     # display status code to make sure it worked or if it crashed
     print(page.status_code)
     # scrape webpage
@@ -35,7 +35,7 @@ def getParseDatafromUrl(url):
     return soup
 def getAllImagesFromUrl(htmlParseData):
     # gets all links in html that are tagged images
-    images = soup.find_all("img")
+    images = htmlParseData.find_all("img")
     # goes thru the images link saved and gets the source the images
     # for loop to go thru all the list saved.
     # for item in images:
@@ -46,13 +46,13 @@ def getAllImagesFromUrl(htmlParseData):
     return stringOfhtmlTag
 def testIfImagesExist(link):
     # look to see if a image link even exist else return string with no image
-    if "src" not in stringOfhtmlTag:
+    if "src" not in link:
         print("no image")
         return False
     return True
 def getLinktoImage(firstLink):
     # get the link information of link leading to the image associated with input
-    firstImageStr = str(firstImage.get("src"))
+    firstImageStr = str(firstLink.get("src"))
     # if link does not include https:, then include it to make it a complete link
     firstImageStr = "https:" + firstImageStr
     # display the output below
