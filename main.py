@@ -14,7 +14,7 @@ if __name__ == '__main__':
 def instructions():
     return render_template('index.html')
 
-@main.route('/post' , methods =['post'])
+@main.route('/' , methods =['post'])
 def returnUrlofImage():
     if request.method =='post':
         wikiUrl = convertStr2Url(request.form['input'])
