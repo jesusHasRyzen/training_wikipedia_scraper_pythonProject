@@ -10,15 +10,15 @@ main = Flask(__name__)
 def instructions():
     return render_template('index.html')
 
-# @main.route("/" , method=['POST'])
-# def _returnUrlofImage():
-#     wikiUrl = convertStr2Url(request.form['input'])
-#     parseDataFromWiki = getParseDatafromUrl(wikiUrl)
-#     htmltagImage = getAllImagesFromUrl(parseDataFromWiki)
-#     doesExist = testIfImagesExist(htmltagImage)
-#     if doesExist:
-#         return getLinktoImage(htmltagImage)
-#     return "does not exist"
+@main.route("/" , method=['POST'])
+def _returnUrlofImage():
+    wikiUrl = convertStr2Url(request.form['input'])
+    parseDataFromWiki = getParseDatafromUrl(wikiUrl)
+    htmltagImage = getAllImagesFromUrl(parseDataFromWiki)
+    doesExist = testIfImagesExist(htmltagImage)
+    if doesExist:
+        return getLinktoImage(htmltagImage)
+    return "does not exist"
 
 
 def convertStr2Url(inputString):
