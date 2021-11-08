@@ -6,6 +6,10 @@ from flask import Flask, request
 # used to look up quite honestly anything on wikipedia
 main = Flask(__name__)
 
+@main.route('/')
+def instructions():
+    return "Hi"
+
 @main.route("/" , method=['POST'])
 def _returnUrlofImage():
     wikiUrl = convertStr2Url(request.form['input'])
