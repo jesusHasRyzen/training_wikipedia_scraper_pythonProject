@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from flask import Flask, request
+from flask import Flask, render_template, request
 # server side post request method to be used to recieve data
 # in the form of a string which will be added to the given url
 # used to look up quite honestly anything on wikipedia
@@ -8,7 +8,7 @@ main = Flask(__name__)
 
 @main.route('/')
 def instructions():
-    return "Hi"
+    return render_template('index.html')
 
 @main.route("/" , method=['POST'])
 def _returnUrlofImage():
