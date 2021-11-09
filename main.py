@@ -18,7 +18,8 @@ def instructions():
 def returnUrlofImage():
     str2 = "ME"
     if request.method == 'POST':
-        str2 = request.args.get('input')
+        request_data = request.get_json()
+        str2 = request_data['input']
         return '''<h1>The website is {}</h1>'''.format(str2)
         # wikiUrl = convertStr2Url(request.form['input'])
         # parseDataFromWiki = getParseDatafromUrl(wikiUrl)
