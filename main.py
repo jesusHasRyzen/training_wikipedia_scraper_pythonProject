@@ -16,14 +16,17 @@ def instructions():
 
 @main.route('/' , methods =['post'])
 def returnUrlofImage():
-    if request.method =='post':
-        print("came by the post request")
+    print("comes into the post function")
+    if request.method == 'post':
+        print("passes the request.method == post")
         wikiUrl = convertStr2Url(request.form['input'])
         parseDataFromWiki = getParseDatafromUrl(wikiUrl)
         htmltagImage = getAllImagesFromUrl(parseDataFromWiki)
         doesExist = testIfImagesExist(htmltagImage)
+        print("comes down to check if the image exist")
         if doesExist:
             return getLinktoImage(htmltagImage)
+    print("makes it to the last return")
     return "does not exist"
 
 
