@@ -57,10 +57,9 @@ def testIfImagesExist(link):
         return False
     return True
 def getLinktoImage(firstLink):
-    return firstLink
     # get the link information of link leading to the image associated with input
     firstImageStr = str(firstLink.get("src"))
-
+    return firstImageStr
     # if link does not include https:, then include it to make it a complete link
     firstImageStr = "https:" + firstImageStr
     # display the output below
