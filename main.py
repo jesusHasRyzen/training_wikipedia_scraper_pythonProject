@@ -22,8 +22,8 @@ def returnUrlofImage():
         str2 = request_data['input']
         wikiUrl = convertStr2Url(str2)
         parseDataFromWiki = getParseDatafromUrl(wikiUrl)
-        return parseDataFromWiki
         htmltagImage = getAllImagesFromUrl(parseDataFromWiki)
+        return htmltagImage
         doesExist = testIfImagesExist(htmltagImage)
         if doesExist:
             return getLinktoImage(htmltagImage)
@@ -37,8 +37,6 @@ def convertStr2Url(inputString):
 def getParseDatafromUrl(url):
     # here we get the websites url
     page = requests.get(url)
-    # display status code to make sure it worked or if it crashed
-    print(page.status_code)
     # scrape webpage
     soup = BeautifulSoup(page.content, 'html.parser')
     return soup
