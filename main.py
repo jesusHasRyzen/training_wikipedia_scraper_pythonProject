@@ -21,6 +21,7 @@ def returnUrlofImage():
         request_data = request.get_json()
         str2 = request_data['input']
         wikiUrl = convertStr2Url(str2)
+        return wikiUrl
         parseDataFromWiki = getParseDatafromUrl(wikiUrl)
         htmltagImage = getAllImagesFromUrl(parseDataFromWiki)
         doesExist = testIfImagesExist(htmltagImage)
