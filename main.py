@@ -20,14 +20,12 @@ def returnUrlofImage():
     if request.method == 'POST':
         request_data = request.get_json()
         str2 = request_data['input']
-        return '''<h1>The website is {}</h1>'''.format(str2)
-        # wikiUrl = convertStr2Url(request.form['input'])
-        # parseDataFromWiki = getParseDatafromUrl(wikiUrl)
-        # htmltagImage = getAllImagesFromUrl(parseDataFromWiki)
-        # doesExist = testIfImagesExist(htmltagImage)
+        wikiUrl = convertStr2Url(str2)
+        parseDataFromWiki = getParseDatafromUrl(wikiUrl)
+        htmltagImage = getAllImagesFromUrl(parseDataFromWiki)
+        doesExist = testIfImagesExist(htmltagImage)
         if doesExist:
             return getLinktoImage(htmltagImage)
-    print("makes it to the last return")
     return "does not exist"
 
 
