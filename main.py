@@ -19,7 +19,7 @@ def returnUrlofImage():
     str2 = "ME"
     if request.method == 'POST':
         request_data = request.get_json()
-        # str2 = request_data['input']
+        str2 = request_data['input']
         return '''<h1>The website is {}</h1>'''.format(request_data)
         # wikiUrl = convertStr2Url(request.form['input'])
         # parseDataFromWiki = getParseDatafromUrl(wikiUrl)
