@@ -23,9 +23,10 @@ def returnUrlofImage():
         wikiUrl = convertStr2Url(str2)
         parseDataFromWiki = getParseDatafromUrl(wikiUrl)
         htmltagImage = getAllImagesFromUrl(parseDataFromWiki)
+        bs4classTemp = getImageData(parseDataFromWiki)
         doesExist = testIfImagesExist(htmltagImage)
         if doesExist:
-            str2 = getLinktoImage(htmltagImage)
+            str2 = getLinktoImage(bs4classTemp)
             return str2
     return "does not exist"
 
@@ -40,6 +41,15 @@ def getParseDatafromUrl(url):
     # scrape webpage
     soup = BeautifulSoup(page.content, 'html.parser')
     return soup
+def getImageData(htmlParseData):
+    # gets all links in html that are tagged images
+    images = htmlParseData.find_all("img")
+    # goes thru the images link saved and gets the source the images
+    # for loop to go thru all the list saved.
+    # for item in images:
+    # 	print(item['src'])
+    firstImage = images[3]
+    return firstImage
 def getAllImagesFromUrl(htmlParseData):
     # gets all links in html that are tagged images
     images = htmlParseData.find_all("img")
@@ -60,13 +70,9 @@ def getLinktoImage(firstLink):
     # get the link information of link leading to the image associated with input
     firstImageStr = firstLink.get("src")
     firstImageStr = str(firstImageStr)
-    return firstImageStr
     # if link does not include https:, then include it to make it a complete link
     firstImageStr = "https:" + firstImageStr
     # display the output below
     return firstImageStr
-
-# get request and add string to end of url
-inputString = "jesus"
 
 
