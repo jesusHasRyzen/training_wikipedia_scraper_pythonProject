@@ -25,6 +25,7 @@ def returnUrlofImage():
         htmltagImage = getAllImagesFromUrl(parseDataFromWiki)
         doesExist = testIfImagesExist(htmltagImage)
         if doesExist:
+            return "me"
             return getLinktoImage(htmltagImage)
     return "does not exist"
 
