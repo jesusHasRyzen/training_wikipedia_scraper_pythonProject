@@ -18,7 +18,7 @@ def instructions():
 def returnUrlofImage():
     str2 = "ME"
     if request.method == 'POST':
-        # str2 = request.form.get('input')
+        str2 = request.args.get('input')
         return str2
         # wikiUrl = convertStr2Url(request.form['input'])
         # parseDataFromWiki = getParseDatafromUrl(wikiUrl)
