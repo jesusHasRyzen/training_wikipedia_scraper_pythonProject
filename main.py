@@ -24,6 +24,7 @@ def returnUrlofImage():
         htmltagImage = getAllImagesFromUrl(parseDataFromWiki)
         doesExist = testIfImagesExist(htmltagImage)
         print("comes down to check if the image exist")
+        return "post"
         if doesExist:
             return getLinktoImage(htmltagImage)
     print("makes it to the last return")
