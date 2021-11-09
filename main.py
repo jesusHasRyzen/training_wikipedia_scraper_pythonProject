@@ -17,8 +17,9 @@ def instructions():
 @main.route('/' , methods =['post'])
 def returnUrlofImage():
     if request.method == 'POST':
-        return "passes the request.method == post"
+
         wikiUrl = convertStr2Url(request.form['input'])
+        return wikiUrl
         parseDataFromWiki = getParseDatafromUrl(wikiUrl)
         htmltagImage = getAllImagesFromUrl(parseDataFromWiki)
         doesExist = testIfImagesExist(htmltagImage)
