@@ -19,7 +19,7 @@ def returnUrlofImage():
     str2 = "ME"
     if request.method == 'POST':
         str2 = request.args.get('input')
-        return str2
+        return '''<h1>The website is {}</h1>'''.format(str2)
         # wikiUrl = convertStr2Url(request.form['input'])
         # parseDataFromWiki = getParseDatafromUrl(wikiUrl)
         # htmltagImage = getAllImagesFromUrl(parseDataFromWiki)
