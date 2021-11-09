@@ -23,7 +23,6 @@ def returnUrlofImage():
         wikiUrl = convertStr2Url(str2)
         parseDataFromWiki = getParseDatafromUrl(wikiUrl)
         htmltagImage = getAllImagesFromUrl(parseDataFromWiki)
-        return htmltagImage
         doesExist = testIfImagesExist(htmltagImage)
         if doesExist:
             return getLinktoImage(htmltagImage)
@@ -54,7 +53,6 @@ def getAllImagesFromUrl(htmlParseData):
 def testIfImagesExist(link):
     # look to see if a image link even exist else return string with no image
     if "src" not in link:
-        print("no image")
         return False
     return True
 def getLinktoImage(firstLink):
