@@ -16,12 +16,20 @@ if __name__ == '__main__':
 def instructions():
     return render_template('index.html')
 
-@main.route('/get')
+@main.route('/getencrypt')
 def instructions2():
     urlEncrypt = 'https://realpython-example-app2.herokuapp.com/?username=jesus'
     # returnFromRequest = requests.get(urlEncrypt)
     # encryptPW = decode_to_string(returnFromRequest)
     return requests.get(urlEncrypt).content
+
+@main.route('/getImages')
+def instructions3():
+    urlImages = 'https://team-anything-microservice.herokuapp.com/get_images'
+
+    # returnFromRequest = requests.get(urlEncrypt)
+    # encryptPW = decode_to_string(returnFromRequest)
+    return requests.get(urlImages).content
 
 @main.route('/' , methods =['post'])
 def returnUrlofImage():
