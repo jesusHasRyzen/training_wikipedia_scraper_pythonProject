@@ -11,9 +11,15 @@ if __name__ == '__main__':
     # webSite.debug = True
     main.run()
 
-@main.route('/')
+@main.route('/' , methods = ['get'])
 def instructions():
+    pw = "jesus"
+    urlEncrypt = 'https://realpython-example-app2.herokuapp.com/?username=' + pw;
+    returnFromRequest = requests.get(urlEncrypt)
+    # encryptPW = decode_to_string(returnFromRequest)
+    print(encryptPW)
     return render_template('index.html')
+
 
 @main.route('/' , methods =['post'])
 def returnUrlofImage():

@@ -1,21 +1,90 @@
 <!DOCTYPE html>
-
-<html lang = "en">
-
+<html lang="en">
+ <style>
+    canvas {
+         border: 1px solid #4f9099;
+        background-color: #d1c844;
+            }
+ </style>
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Input text to encrypt to binary</title>
+    <title>Document</title>
+<!--    <script src = "conquian.js" type= "module">-->
+
+    </script>
 </head>
+<!-- <body onload="startGame()"> -->
 <body>
-    <div class="container">
-        <h1>Input text to encrypt to binary</h1>
-        <form action="/submit" method="post">
-            <input
-                type = "text"
-            />
-        </form>
-    </div>
+<!--    <div class = "Deck">52</div>-->
+    <br>
+    <form action ="/input_encrypted_via_microservice" method = "post">
+    <label for="username">Username</label>
+    <input type="text" id = "username" name="username">
+    <br>
+    <label for = "PW">Password</label>
+    <input type="text" id="PW" name = "PW">
+    <script>
+
+    </script>
+    <input type="button" value="encrypt"">
+</form>
+    <br>
+    <br>
+
+
+    <button class="HomeBtn">HOME</button>
+    <button class="SettingsBtn">Settings</button>
+    <!-- <script>
+        function startGame() {
+            myGameArea.start();
+            cardOne = new component(140, 300, "red", 20, 420);
+            cardTwo = new component(140, 300, "green", 175, 420);
+            cardThree = new component(140, 300, "pink", 331, 420);
+            cardFour = new component(140, 300, "grey", 486, 420);
+            cardFive = new component(140, 300, "purple", 642, 420);
+            cardSix = new component(140, 300, "orange", 797, 420);
+            cardSeven = new component(140, 300, "lime", 953, 420);
+            cardEight = new component(140, 300, "black", 1108, 420);
+            cardNine = new component(140, 300, "white", 1263, 420)
+
+            deck = new component(140, 300, "behindDeck-1.jpg", 1230, 200, "image");
+
+        }
+
+        var myGameArea = {
+            canvas : document.createElement("canvas"),
+            start : function() {
+            this.canvas.width = 1400;
+            this.canvas.height = 700;
+            this.context = this.canvas.getContext("2d");
+            document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+            }
+        }
+        function component(width, height, color, x, y, type) {
+            this.type = type;
+            if (type == "image") {
+                this.image = new Image();
+                this.image.src = color;
+            }
+            this.width = width;
+            this.height = height;
+            this.x = x;
+            this.y = y;
+            ctx = myGameArea.context;
+            if (type == "image") {
+                ctx.drawImage(this.image,
+                    this.x,
+                    this.y,
+                    this.width, this.height);
+            } else {
+                ctx.fillStyle = color;
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+            }
+
+        }
+    </script> -->
+
 </body>
 </html>
