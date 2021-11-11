@@ -18,12 +18,10 @@ def instructions():
 
 @main.route('/get')
 def instructions():
-    pw = "jesus"
-    urlEncrypt = 'https://realpython-example-app2.herokuapp.com/?username=' + pw;
-    returnFromRequest = requests.get(urlEncrypt)
+    urlEncrypt = 'https://realpython-example-app2.herokuapp.com/?username=jesus'
+    # returnFromRequest = requests.get(urlEncrypt)
     # encryptPW = decode_to_string(returnFromRequest)
-    print("hi")
-    return returnFromRequest.content
+    return requests.get(urlEncrypt).content
 
 @main.route('/' , methods =['post'])
 def returnUrlofImage():
