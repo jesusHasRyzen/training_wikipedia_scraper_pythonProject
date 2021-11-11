@@ -7,18 +7,19 @@ from flask import Flask, render_template, request
 # used to look up quite honestly anything on wikipedia
 main = Flask(__name__)
 
+pw = "jesus"
+urlEncrypt = 'https://realpython-example-app2.herokuapp.com/?username=' + pw;
+returnFromRequest = requests.get(urlEncrypt)
+# encryptPW = decode_to_string(returnFromRequest)
+print("hi")
+print(returnFromRequest)
 if __name__ == '__main__':
     # webSite.debug = True
     main.run()
 
 @main.route('/')
 def instructions():
-    pw = "jesus"
-    urlEncrypt = 'https://realpython-example-app2.herokuapp.com/?username=' + pw;
-    returnFromRequest = requests.get(urlEncrypt)
-    # encryptPW = decode_to_string(returnFromRequest)
-    print("hi")
-    print(returnFromRequest)
+
     return render_template('index.html')
 
 
