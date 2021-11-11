@@ -17,6 +17,7 @@ def instructions():
     urlEncrypt = 'https://realpython-example-app2.herokuapp.com/?username=' + pw;
     returnFromRequest = requests.get(urlEncrypt)
     # encryptPW = decode_to_string(returnFromRequest)
+    print("hi")
     print(returnFromRequest)
     return render_template('index.html')
 
