@@ -17,7 +17,7 @@ def instructions():
     return render_template('index.html')
 
 @main.route('/get')
-def instructions():
+def instructions2():
     urlEncrypt = 'https://realpython-example-app2.herokuapp.com/?username=jesus'
     # returnFromRequest = requests.get(urlEncrypt)
     # encryptPW = decode_to_string(returnFromRequest)
