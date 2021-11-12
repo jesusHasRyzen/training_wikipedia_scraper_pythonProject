@@ -4,6 +4,7 @@ import base64
 import requests
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, request
+import json
 from base64 import decodebytes
 from PIL import Image
 from io import BytesIO
@@ -36,7 +37,7 @@ def instructions2():
     uname = request.form["uname"]
 
     urlImages = 'https://team-anything-microservice.herokuapp.com/get_images'
-    images = requests.get(urlImages).content
+    images = requests.get(urlImages).json()
     byte_array = bytes(images)
     images_decoded = base64.decodebytes(byte_array)
     # images_decoded = BytesIO(images_decoded)
