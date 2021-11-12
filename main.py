@@ -38,9 +38,13 @@ def instructions2():
 
 
     urlRules = 'https://team-anything-microservice.herokuapp.com/get_rules'
-    images = requests.get(urlRules).json()
-    images = images['deal']
-
+    jsonresponse = requests.get(urlRules).json()
+    rules = jsonresponse['deal']
+    objective = jsonresponse['objective']
+    pack = jsonresponse['pack']
+    rank =  jsonresponse['rank']
+    score = jsonresponse['score']
+    link = jsonresponse['youtube']
     urlImages = 'https://team-anything-microservice.herokuapp.com/get_images'
     # images = requests.get(urlImages).json()
     # byte_array = bytes(images)
@@ -49,7 +53,7 @@ def instructions2():
 
 
 
-    return render_template("loggedIn.html", name = uname, images = images, pws = pws)
+    return render_template("loggedIn.html", name = uname, rules = rules, objective = objective, pack = pack , rank = rank, score = score, link = link, pws = pws)
 
 # @main.route('/getImages')
 # def instructions3():
