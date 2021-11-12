@@ -32,15 +32,18 @@ def instructions2():
     print(pws)
     uname = request.form["uname"]
 
+    urlImages = 'https://team-anything-microservice.herokuapp.com/get_images'
+    imageBitFormat = requests.get(urlImages).content
+    print(imageBitFormat)
     return render_template("loggedIn.html", name = uname)
 
-@main.route('/getImages')
-def instructions3():
-    urlImages = 'https://team-anything-microservice.herokuapp.com/get_images'
-
-    # returnFromRequest = requests.get(urlEncrypt)
-    # encryptPW = decode_to_string(returnFromRequest)
-    return requests.get(urlImages).content
+# @main.route('/getImages')
+# def instructions3():
+#     urlImages = 'https://team-anything-microservice.herokuapp.com/get_images'
+#
+#     # returnFromRequest = requests.get(urlEncrypt)
+#     # encryptPW = decode_to_string(returnFromRequest)
+#     return requests.get(urlImages).content
 
 @main.route('/' , methods =['post'])
 def returnUrlofImage():
