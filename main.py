@@ -34,7 +34,6 @@ def instructions2():
 
     urlImages = 'https://team-anything-microservice.herokuapp.com/get_images'
     images = requests.get(urlImages).content
-    print(imageBitFormat)
     return render_template("loggedIn.html", name = uname, images = images)
 
 # @main.route('/getImages')
