@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, request
 from base64 import decodebytes
-import Image
+import PIL
 from io import BytesIO
 # in the form of a string which will be added to the given url
 # used to look up quite honestly anything on wikipedia
