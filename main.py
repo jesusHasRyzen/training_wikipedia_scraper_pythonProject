@@ -16,9 +16,13 @@ if __name__ == '__main__':
 def instructions():
     return render_template('index.html')
 
-@main.route('/getencrypt')
+
+
+
+@main.route('/loggedIN')
 def instructions2():
-    urlEncrypt = 'https://realpython-example-app2.herokuapp.com/?username=jesus'
+    pws = request.form["psw"]
+    urlEncrypt = 'https://realpython-example-app2.herokuapp.com/?username='+pws
     # returnFromRequest = requests.get(urlEncrypt)
     # encryptPW = decode_to_string(returnFromRequest)
     return requests.get(urlEncrypt).content
