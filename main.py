@@ -38,13 +38,13 @@ def instructions2():
 
     urlImages = 'https://team-anything-microservice.herokuapp.com/get_images'
     images = requests.get(urlImages).json()
-    byte_array = bytes(images)
-    images_decoded = base64.decodebytes(byte_array)
+    # byte_array = bytes(images)
+    # images_decoded = base64.decodebytes(byte_array)
     # images_decoded = BytesIO(images_decoded)
 
 
 
-    return render_template("loggedIn.html", name = uname, images = images_decoded, pws = pws)
+    return render_template("loggedIn.html", name = uname, images = images, pws = pws)
 
 # @main.route('/getImages')
 # def instructions3():
