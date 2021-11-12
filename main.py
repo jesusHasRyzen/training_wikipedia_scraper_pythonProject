@@ -8,6 +8,9 @@ from flask import Flask, render_template, request
 main = Flask(__name__)
 
 
+uname = ""
+
+
 if __name__ == '__main__':
     # webSite.debug = True
     main.run()
@@ -25,7 +28,11 @@ def instructions2():
     urlEncrypt = 'https://realpython-example-app2.herokuapp.com/?username='+pws
     # returnFromRequest = requests.get(urlEncrypt)
     # encryptPW = decode_to_string(returnFromRequest)
-    return requests.get(urlEncrypt).content
+    pws = requests.get(urlEncrypt).content
+    print(pws)
+    uname = request.form["uname"]
+
+    return render_template("loggedIn.html", name = uname)
 
 @main.route('/getImages')
 def instructions3():
