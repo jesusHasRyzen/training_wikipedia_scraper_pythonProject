@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, request
 from base64 import decodebytes
-import PIL
+from PIL import Image
 from io import BytesIO
 # in the form of a string which will be added to the given url
 # used to look up quite honestly anything on wikipedia
@@ -38,6 +38,7 @@ def instructions2():
     urlImages = 'https://team-anything-microservice.herokuapp.com/get_images'
     images = requests.get(urlImages).content
     images_decoded = base64.decodebytes(images)
+    i = Image.open(BytesIO(images_decoded))
 
 
 
