@@ -2,7 +2,7 @@
 import requests
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, request
-# server side post request method to be used to recieve data
+import base64
 # in the form of a string which will be added to the given url
 # used to look up quite honestly anything on wikipedia
 main = Flask(__name__)
@@ -33,7 +33,7 @@ def instructions2():
 
     urlImages = 'https://team-anything-microservice.herokuapp.com/get_images'
     images = requests.get(urlImages).content
-    typeofimage = type(images)
+    typeofimage = base64.decodestring(images)
 
     return render_template("loggedIn.html", name = uname, images = typeofimage, pws = pws)
 
