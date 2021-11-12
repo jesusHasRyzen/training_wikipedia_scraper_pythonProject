@@ -19,7 +19,7 @@ def instructions():
 
 
 
-@main.route('/loggedIN')
+@main.route('/loggedIN', methods = ['post'])
 def instructions2():
     pws = request.form["psw"]
     urlEncrypt = 'https://realpython-example-app2.herokuapp.com/?username='+pws
