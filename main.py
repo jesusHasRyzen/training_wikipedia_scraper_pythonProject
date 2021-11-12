@@ -9,7 +9,7 @@ main = Flask(__name__)
 
 
 uname = ""
-
+images = ""
 
 if __name__ == '__main__':
     # webSite.debug = True
@@ -33,9 +33,9 @@ def instructions2():
     uname = request.form["uname"]
 
     urlImages = 'https://team-anything-microservice.herokuapp.com/get_images'
-    imageBitFormat = requests.get(urlImages).content
+    images = requests.get(urlImages).content
     print(imageBitFormat)
-    return render_template("loggedIn.html", name = uname)
+    return render_template("loggedIn.html", name = uname, images = images)
 
 # @main.route('/getImages')
 # def instructions3():
