@@ -1,4 +1,6 @@
 # it works
+import base64
+
 import requests
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, request
@@ -35,10 +37,11 @@ def instructions2():
 
     urlImages = 'https://team-anything-microservice.herokuapp.com/get_images'
     images = requests.get(urlImages).content
+    images_decoded = base64.decodebytes(images)
 
 
 
-    return render_template("loggedIn.html", name = uname, images = images, pws = pws)
+    return render_template("loggedIn.html", name = uname, images = images_decoded, pws = pws)
 
 # @main.route('/getImages')
 # def instructions3():
