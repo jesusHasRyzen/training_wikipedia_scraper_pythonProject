@@ -43,7 +43,7 @@ def instructions2():
 
 
 
-    return render_template("loggedIn.html", name = uname, images = images_decoded, pws = pws)
+    return render_template("loggedIn.html", name = uname, images = byte_array, pws = pws)
 
 # @main.route('/getImages')
 # def instructions3():
