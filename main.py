@@ -38,7 +38,7 @@ def instructions2():
     urlImages = 'https://team-anything-microservice.herokuapp.com/get_images'
     images = requests.get(urlImages).content
     images_decoded = base64.decodebytes(images)
-    i = Image.open(BytesIO(images_decoded))
+    images_decoded = BytesIO(images_decoded)
 
 
 
