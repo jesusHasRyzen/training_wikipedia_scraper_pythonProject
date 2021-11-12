@@ -29,12 +29,13 @@ def instructions2():
     # returnFromRequest = requests.get(urlEncrypt)
     # encryptPW = decode_to_string(returnFromRequest)
     pws = requests.get(urlEncrypt).content
-    print(pws)
     uname = request.form["uname"]
 
     urlImages = 'https://team-anything-microservice.herokuapp.com/get_images'
     images = requests.get(urlImages).content
-    return render_template("loggedIn.html", name = uname, images = images, pws = pws)
+    typeofimage = type(images)
+
+    return render_template("loggedIn.html", name = uname, images = typeofimage, pws = pws)
 
 # @main.route('/getImages')
 # def instructions3():
