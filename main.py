@@ -36,8 +36,13 @@ def instructions2():
     pws = requests.get(urlEncrypt).content
     uname = request.form["uname"]
 
+
+    urlRules = 'https://team-anything-microservice.herokuapp.com/get_rules'
+    images = requests.get(urlRules).json()
+    images = images['deal']
+
     urlImages = 'https://team-anything-microservice.herokuapp.com/get_images'
-    images = requests.get(urlImages).json()
+    # images = requests.get(urlImages).json()
     # byte_array = bytes(images)
     # images_decoded = base64.decodebytes(byte_array)
     # images_decoded = BytesIO(images_decoded)
