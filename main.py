@@ -103,7 +103,13 @@ def getImageData(htmlParseData):
     return firstImage
 def getAllImagesFromUrl(htmlParseData):
     # gets all links in html that are tagged images
+
     images = htmlParseData.find_all("img")
+
+    # added this to see return
+    return images
+
+
     # goes thru the images link saved and gets the source the images
     # for loop to go thru all the list saved.
     # for item in images:
