@@ -106,6 +106,7 @@ def getAllImagesFromUrl(htmlParseData):
     # for loop to go thru all the list saved.
     # for item in images:
     # 	print(item['src'])
+    print(images)
     firstImage = images[3]
     # convert the class bs4.element.tag into a string
     stringOfhtmlTag = str(firstImage)
