@@ -73,8 +73,8 @@ def returnUrlofImage():
         parseDataFromWiki = getParseDatafromUrl(wikiUrl)
         htmltagImage = getAllImagesFromUrl(parseDataFromWiki)
 
-        bs4classTemp = getImageData(parseDataFromWiki)
-        doesExist = testIfImagesExist(htmltagImage, str2)
+        bs4classTemp = getImageData(parseDataFromWiki, str2)
+        doesExist = testIfImagesExist(htmltagImage)
         if doesExist:
             str2 = getLinktoImage(bs4classTemp)
             return str2
@@ -91,13 +91,17 @@ def getParseDatafromUrl(url):
     # scrape webpage
     soup = BeautifulSoup(page.content, 'html.parser')
     return soup
-def getImageData(htmlParseData):
+def getImageData(htmlParseData, input):
     # gets all links in html that are tagged images
     images = htmlParseData.find_all("img")
     # goes thru the images link saved and gets the source the images
     # for loop to go thru all the list saved.
     # for item in images:
     # 	print(item['src'])
+    for image in images:
+        if input in image:
+            firstImage = image
+            return firstImage
     firstImage = images[3]
     return firstImage
 def getAllImagesFromUrl(htmlParseData):
@@ -113,9 +117,9 @@ def getAllImagesFromUrl(htmlParseData):
     # convert the class bs4.element.tag into a string
     stringOfhtmlTag = str(firstImage)
     return stringOfhtmlTag
-def testIfImagesExist(link, input):
+def testIfImagesExist(link):
     # look to see if a image link even exist else return string with no image
-    if input not in link:
+    if "src" not in link:
         return False
     return True
 def getLinktoImage(firstLink):
