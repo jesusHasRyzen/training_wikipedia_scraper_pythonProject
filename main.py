@@ -72,10 +72,9 @@ def returnUrlofImage():
         wikiUrl = convertStr2Url(str2)
         parseDataFromWiki = getParseDatafromUrl(wikiUrl)
         htmltagImage = getAllImagesFromUrl(parseDataFromWiki)
-        # added this return for debugging
-        return htmltagImage
+
         bs4classTemp = getImageData(parseDataFromWiki)
-        doesExist = testIfImagesExist(htmltagImage)
+        doesExist = testIfImagesExist(htmltagImage, str2)
         if doesExist:
             str2 = getLinktoImage(bs4classTemp)
             return str2
@@ -114,9 +113,9 @@ def getAllImagesFromUrl(htmlParseData):
     # convert the class bs4.element.tag into a string
     stringOfhtmlTag = str(firstImage)
     return stringOfhtmlTag
-def testIfImagesExist(link):
+def testIfImagesExist(link, input):
     # look to see if a image link even exist else return string with no image
-    if "src" not in link:
+    if input not in link:
         return False
     return True
 def getLinktoImage(firstLink):
