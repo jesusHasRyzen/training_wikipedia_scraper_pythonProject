@@ -98,7 +98,7 @@ def getAllImagesFromUrl(htmlParseData):
     firstImage = images
     # convert the class bs4.element.tag into a string
     stringOfhtmlTag = str(firstImage)
-    print(stringOfhtmlTag)
+    # print(stringOfhtmlTag)
     return stringOfhtmlTag
 def testIfImagesExist(link):
     # look to see if a image link even exist else return string with no image
