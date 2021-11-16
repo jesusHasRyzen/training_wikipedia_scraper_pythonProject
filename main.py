@@ -23,9 +23,7 @@ images = ""
 
 if __name__ == '__main__':
     # webSite.debug = True
-    main.run(
-        debug= True, use_debugger=False, use_reloader=False
-    )
+    main.run(debug= True)
 
 
 # call the initial page when opened on webpage
