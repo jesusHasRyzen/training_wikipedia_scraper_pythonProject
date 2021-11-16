@@ -11,7 +11,7 @@ log.setLevel(logging.DEBUG)
 ch = logging.StreamHandler()
 ch.setLevel(logging.DEBUG)
 log.addHandler(ch)
-HTTPConnection.set_debuglevel(1)
+HTTPConnection.debuglevel = 1
 # to make a request in order to obtain data from wiki
 import requests
 
