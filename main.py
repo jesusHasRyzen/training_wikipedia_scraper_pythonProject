@@ -21,9 +21,7 @@ main = Flask(__name__)
 
 images = ""
 
-if __name__ == '__main__':
-    # webSite.debug = True
-    main.run()
+
 
 
 # call the initial page when opened on webpage
@@ -37,9 +35,8 @@ def instructions():
 # then gets the input and stores it in str2
 # creates wikipedia url for the input
 # gets data from the created url and parse the data with BeautifulSoup
-# then obtains the img src from the parse data
+# then obtains the multiple img src from the parse data
 @main.route('/' , methods =['post'])
-
 def returnUrlofImage():
     str2 = "ME"
     if request.method == 'POST':
@@ -49,10 +46,10 @@ def returnUrlofImage():
         parseDataFromWiki = getParseDatafromUrl(wikiUrl)
         htmltagImage = getAllImagesFromUrl(parseDataFromWiki)
 
-        bs4classTemp = getImageData(parseDataFromWiki)
+        bs4classTemp = getImageData(parseDataFromWiki, str2)
         doesExist = testIfImagesExist(htmltagImage)
         if doesExist:
-            str2 = getLinktoImage(bs4classTemp, str2)
+            str2 = getLinktoImage(bs4classTemp)
             return str2
     return "does not exist"
 
@@ -67,14 +64,18 @@ def getParseDatafromUrl(url):
     # scrape webpage
     soup = BeautifulSoup(page.content, 'html.parser')
     return soup
-def getImageData(htmlParseData):
+def getImageData(htmlParseData, input):
     # gets all links in html that are tagged images
     images = htmlParseData.find_all("img")
     # goes thru the images link saved and gets the source the images
     # for loop to go thru all the list saved.
     # for item in images:
-    firstImage = images[3]
-    return firstImage
+    for image in images:
+        imageWithInput = str(image.get("src"))
+        imageWithInput = imageWithInput.lower()
+        if input in imageWithInput:
+            return imageWithInput
+    return ""
 def getAllImagesFromUrl(htmlParseData):
     # gets all links in html that are tagged images
 
@@ -93,15 +94,17 @@ def testIfImagesExist(link):
     if "src" not in link:
         return False
     return True
-def getLinktoImage(firstLink, input):
+def getLinktoImage(firstLink):
     # get the link information of link leading to the image associated with input
-    firstImageStr = firstLink.get("src")
-    firstImageStr = str(firstImageStr)
+    # firstImageStr = firstLink.get("src")
+    # firstImageStr = str(firstImageStr)
 
-    if input not in firstImageStr:
+    # if input not in firstImageStr:
         # if link does not include https:, then include it to make it a complete link
-        firstImageStr = "https:" + firstImageStr
+        firstLink = "https:" + firstLink
         # display the output below
-        return firstImageStr
-    return ""
+        return firstLink
 
+if __name__ == '__main__':
+    # webSite.debug = True
+    main.run()
