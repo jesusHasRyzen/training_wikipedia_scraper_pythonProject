@@ -98,7 +98,7 @@ def getLinktoImage(firstLink, input):
     firstImageStr = firstLink.get("src")
     firstImageStr = str(firstImageStr)
 
-    if input in firstImageStr:
+    if input not in firstImageStr:
         # if link does not include https:, then include it to make it a complete link
         firstImageStr = "https:" + firstImageStr
         # display the output below
