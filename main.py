@@ -1,12 +1,26 @@
 # it works
 import base64
 
+import logging
+from http.client import HTTPConnection
+
+log = logging.getLogger('urllib3')
+log.setLevel(logging.DEBUG)
 
 
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+log.addHandler(ch)
+HTTPConnection.set_debuglevel(1)
+# to make a request in order to obtain data from wiki
 import requests
+
+
 #imported beautifulSoup to help parse the data getting passed when
 # user makes request in json format
 from bs4 import BeautifulSoup
+
+
 #imported flask to work with the deploying the program online.
 from flask import Flask, render_template, request
 import json
@@ -21,12 +35,21 @@ if __name__ == '__main__':
     # webSite.debug = True
     main.run()
 
+
+# call the initial page when opened on webpage
+# will open with an image stating request, no buttons or any interaction
 @main.route('/')
 def instructions():
     return render_template('index.html')
 
-
+# post requests takes in data in the form of json
+# first it checks if the requests was made via post
+# then gets the input and stores it in str2
+# creates wikipedia url for the input
+# gets data from the created url and parse the data with BeautifulSoup
+# then obtains the img src from the parse data
 @main.route('/' , methods =['post'])
+
 def returnUrlofImage():
     str2 = "ME"
     if request.method == 'POST':
@@ -60,7 +83,6 @@ def getImageData(htmlParseData):
     # goes thru the images link saved and gets the source the images
     # for loop to go thru all the list saved.
     # for item in images:
-    # 	print(item['src'])
     firstImage = images[3]
     return firstImage
 def getAllImagesFromUrl(htmlParseData):
