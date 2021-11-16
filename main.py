@@ -70,7 +70,6 @@ def returnUrlofImage():
 def convertStr2Url(inputString):
     # create url with added string at the end
     wikiUrl = "https://en.wikipedia.org/wiki/" + inputString
-    print(wikiUrl)
     return wikiUrl
 def getParseDatafromUrl(url):
     # here we get the websites url
@@ -98,7 +97,6 @@ def getAllImagesFromUrl(htmlParseData):
     firstImage = images
     # convert the class bs4.element.tag into a string
     stringOfhtmlTag = str(firstImage)
-    # print(stringOfhtmlTag)
     return stringOfhtmlTag
 def testIfImagesExist(link):
     # look to see if a image link even exist else return string with no image
@@ -112,7 +110,6 @@ def getLinktoImage(firstLink):
     # if link does not include https:, then include it to make it a complete link
     firstImageStr = "https:" + firstImageStr
     # display the output below
-    print(firstImageStr)
     return firstImageStr
 
 
