@@ -44,11 +44,10 @@ def returnUrlofImage():
         str2 = request_data['input']
         wikiUrl = convertStr2Url(str2)
         parseDataFromWiki = getParseDatafromUrl(wikiUrl)
-        htmltagImage = getAllImagesFromUrl(parseDataFromWiki)
+        # htmltagImage = getAllImagesFromUrl(parseDataFromWiki)
 
         bs4classTemp = getImageData(parseDataFromWiki, str2)
-        doesExist = testIfImagesExist(htmltagImage)
-        if doesExist:
+        if bs4classTemp != "":
             str2 = getLinktoImage(bs4classTemp)
             return str2
     return "does not exist"
@@ -71,9 +70,12 @@ def getImageData(htmlParseData, input):
     # for loop to go thru all the list saved.
     # for item in images:
     for image in images:
-        imageWithInput = str(image.get("src"))
-        imageWithInput = imageWithInput.lower()
-        if input in imageWithInput:
+        print(image.get("alt").lower())
+        if input in str(image.get("alt")).lower():
+            imageWithInput = image
+            return imageWithInput
+        if input in str(image.get("src")):
+            imageWithInput = image
             return imageWithInput
     return ""
 def getAllImagesFromUrl(htmlParseData):
@@ -96,14 +98,14 @@ def testIfImagesExist(link):
     return True
 def getLinktoImage(firstLink):
     # get the link information of link leading to the image associated with input
-    # firstImageStr = firstLink.get("src")
-    # firstImageStr = str(firstImageStr)
+    firstImageStr = firstLink.get("src")
+    firstImageStr = str(firstImageStr)
 
     # if input not in firstImageStr:
         # if link does not include https:, then include it to make it a complete link
-        firstLink = "https:" + firstLink
+    firstLink = "https:" + firstImageStr
         # display the output below
-        return firstLink
+    return firstLink
 
 if __name__ == '__main__':
     # webSite.debug = True
