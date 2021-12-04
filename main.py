@@ -60,7 +60,7 @@ def convertStr2Url(inputString):
 def getParseDatafromUrl(url):
     # here we get the websites url
     page = requests.get(url)
-    # scrape webpage
+    # scrape webpage with BeautifulSoup and extract necessary data in more readable format
     soup = BeautifulSoup(page.content, 'html.parser')
     return soup
 def getImageData(htmlParseData, input):
